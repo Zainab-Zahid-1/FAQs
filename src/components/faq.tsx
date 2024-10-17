@@ -45,7 +45,7 @@ export default function FAQComponent() {
   const filteredFAQs = activeTab === "All" ? faqData.faqs["All"] : faqData.faqs[activeTab]
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-12">
+    <div className="max-w-2xl mx-auto px-4 py-12"> {/* Decreased width from max-w-3xl to max-w-2xl */}
       <h2 className="text-3xl font-bold text-center mb-2">{faqData.title}</h2>
       <p className="text-center text-gray-600 mb-8">{faqData.description}</p>
 
@@ -64,10 +64,10 @@ export default function FAQComponent() {
 
         <TabsContent value={activeTab} className="mt-4 space-y-4">
           {filteredFAQs.map((faq, index) => (
-            <div key={index} className="border rounded-lg shadow-sm">
+            <div key={index} className="bg-white rounded-md shadow-sm p-4"> {/* Removed border and reduced roundness */}
               <button
                 onClick={() => setOpenItem(openItem === index ? null : index)}
-                className="flex justify-between items-center w-full p-4 text-left"
+                className="flex justify-between items-center w-full text-left"
               >
                 <span className="font-medium">{faq.question}</span>
                 <svg
@@ -82,7 +82,7 @@ export default function FAQComponent() {
                 </svg>
               </button>
               {openItem === index && (
-                <div className="p-4 pt-0 text-gray-600">
+                <div className="pt-2 text-gray-600">
                   {faq.answer}
                 </div>
               )}
